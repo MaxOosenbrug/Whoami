@@ -1,18 +1,19 @@
 name: Deploy static site to GitHub Pages
 
-permissions:
-  contents: write
-
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write  # <--- essentieel
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4  # mag ook v3 zijn, maar v4 is nieuwer
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
