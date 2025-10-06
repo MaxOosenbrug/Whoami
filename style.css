@@ -306,15 +306,23 @@ body.dark-mode .shooting-stars {
 }
 
 .timeline-card {
-  min-width: 260px;
-  max-width: 340px;
+  /* Gebruik dezelfde stijl als .card */
   background: white;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-  padding: 24px 20px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
-  transition: box-shadow 0.3s, background 0.3s;
-  flex: 1 1 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.timeline-card .btn {
+  margin-top: 16px;
+  align-self: flex-start;
 }
 
 .carousel-btn {

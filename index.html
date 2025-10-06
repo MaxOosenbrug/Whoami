@@ -103,28 +103,30 @@ const timelineData = [
     title: "Process Analyst",
     org: "BOL",
     period: "2024 – to date",
-    desc: "Driving continous improvement through process analysis and optimization."
+    desc: "Driving continous improvement through process analysis and optimization.",
+    link: "#"
   },  
   {
     title: "Product Owner",
     org: "NautaDutilh",
     period: "2019 – 2024",
-    desc: "Leading digital transformation initiatives, phasing out legacy systems and implementing new solutions."
+    desc: "Leading digital transformation initiatives, phasing out legacy systems and implementing new solutions.",
+    link: "#"
   },
-    {
+  {
     title: "Different roles in IT, produrement and analysis",
     org: "Henkel, Guidion",
     period: "2016 – 2019",
-    desc: "Bacheloropleiding met focus op management, economie en organisatie."
+    desc: "Bacheloropleiding met focus op management, economie en organisatie.",
+    link: "#"
   },
   {
     title: "Dual Masters Digital Business Administration and Economics & Consumer Behavior",
     org: "University of Leiden & Amsterdam",
     period: "2012 – 2019",
-    desc: "Two master's degrees focusing on the intersection of technology, business, and consumer behavior."
+    desc: "Two master's degrees focusing on the intersection of technology, business, and consumer behavior.",
+    link: "#"
   }
-
-
 ];
 
 let timelineIndex = 0;
@@ -133,15 +135,12 @@ const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 
 function renderTimelineCards() {
-  // Clear existing cards
   timelineCards.innerHTML = '';
 
-  // Determine the range of indices to display
-  const start = timelineIndex;
-  const end = Math.min(timelineIndex + 3, timelineData.length);
-
-  for (let i = start; i < end; i++) {
-    const item = timelineData[i];
+  // Toon altijd 3 cards, loop indien nodig rond
+  for (let i = 0; i < 3; i++) {
+    const dataIdx = (timelineIndex + i) % timelineData.length;
+    const item = timelineData[dataIdx];
     const card = document.createElement('div');
     card.className = 'timeline-card';
     card.innerHTML = `
@@ -149,18 +148,19 @@ function renderTimelineCards() {
       <p><strong>${item.org}</strong></p>
       <p>${item.period}</p>
       <p>${item.desc}</p>
+      <a href="${item.link}" class="btn">See more</a>
     `;
     timelineCards.appendChild(card);
   }
 }
 
 prevBtn.addEventListener('click', () => {
-  timelineIndex = Math.max(timelineIndex - 1, 0);
+  timelineIndex = (timelineIndex - 1 + timelineData.length) % timelineData.length;
   renderTimelineCards();
 });
 
 nextBtn.addEventListener('click', () => {
-  timelineIndex = Math.min(timelineIndex + 1, timelineData.length - 3);
+  timelineIndex = (timelineIndex + 1) % timelineData.length;
   renderTimelineCards();
 });
 
