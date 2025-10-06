@@ -289,3 +289,62 @@ body.dark-mode .shooting-stars {
 .shooting-stars {
   display: none; /* standaard verbergen */
 }
+
+.timeline-carousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 40px 0;
+}
+
+.timeline-cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.timeline-card {
+  min-width: 260px;
+  max-width: 340px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  padding: 24px 20px;
+  text-align: left;
+  transition: box-shadow 0.3s, background 0.3s;
+  flex: 1 1 0;
+}
+
+.carousel-btn {
+  background: #5e60ce;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.carousel-btn:hover {
+  background: #64dfdf;
+}
+
+body.dark-mode .timeline-card {
+  background: #23234a;
+  color: #f0f0f0;
+  box-shadow: 0 2px 12px rgba(30,30,47,0.25);
+}
+
+body.dark-mode .carousel-btn {
+  background: #64dfdf;
+  color: #23234a;
+}
+
+body.dark-mode .carousel-btn:hover {
+  background: #5e60ce;
+  color: #fff;
+}
