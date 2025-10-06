@@ -7,47 +7,81 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleButton = document.getElementById('darkModeToggle');
+
+  toggleButton.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+
+    // Wissel icoon tussen moon en sun
+    if(document.body.classList.contains('dark-mode')) {
+      toggleButton.textContent = '☀️';
+    } else {
+      toggleButton.textContent = '🌙';
+    }
+  });
+});
+</script>
+
+
 <body>
   <header>
-<section class="Max">
-  <img src="images/profilepicture.png" alt="Max" class="profile-pic">
-  <h2> Product Ownership · Design · Analysis</h2>
-  <p></p>
-  <a href="#portfolio" class="btn">A sample of my work</a>
-</section>
+    <div class="shooting-stars">
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+    </div>
+
+    <h1>Max Oosenbrug</h1>
+
+
+  <!-- Moon toggle button -->
+  <button id="darkModeToggle" class="moon-btn" aria-label="Toggle dark mode">🌙</button>
+
+    <section class="max">
+      <img src="images/profilepicture.png" alt="Max" class="profile-pic">
+      <h2>Product Ownership · Design · Analysis</h2>
+    </section>
   </header>
 
   <main>
     <section id="about">
       <h2>About me</h2>
-      <p>With over 7 years of experience as a product owner and data analyst. -------- </p>
+      <p>With over 7 years of experience as a product owner and analyst, I'm convinced that the best results are achieved through collaboration. 
+        Thorough analysis in combination with close stakeholder management, combined with humor and playfulness. </p>
     </section>
 
     <section id="portfolio">
       <h2>Projects</h2>
-          <div class="projects">
-            <a href="productowner.html" class="card-link">
-              <div class="card">
-                <h3>🚀 Product Ownership</h3>
-                <p>Iteratively creating better and better products with a strong focus on cross-team collaboration</p>
-              </div>
-            </a>
-            <div class="card">
-              <h3>🎨 Design Driven Development</h3>
-              <p>I believe that development and design go hand in hand.</p>
-            </div>
-            <div class="card">
-              <h3>📊 Data, Data, Data</h3>
-              <p></p>
-            </div>
+      <div class="projects">
 
+        <div class="card">
+          <h3>🚀 Product Ownership</h3>
+          <p>Iteratively creating better and better products with a strong focus on cross-team collaboration.</p>
+          <a href="productowner.html" class="btn">See more</a>
+        </div>
+
+        <div class="card">
+          <h3>🎨 Design Driven Development</h3>
+          <p>I believe that development and design go hand in hand.</p>
+          <a href="#" class="btn">See more</a>
+        </div>
+
+        <div class="card">
+          <h3>📊 Data, Data, Data</h3>
+          <p>Data-driven decisions improve product outcomes.</p>
+          <a href="#" class="btn">See more</a>
+        </div>
 
       </div>
     </section>
+
     <section id="contact">
       <h2>Contact</h2>
       <a href="mailto:max.oosenbrug@gmail.com" class="btn">Send a message</a>
-      <p>Of bekijk mijn <a href="https://www.linkedin.com/in/maxoosenbrug/" target="_blank">LinkedIn</a>.</p>
+      <p>Or check me out on <a href="https://www.linkedin.com/in/maxoosenbrug/" target="_blank">LinkedIn</a>.</p>
     </section>
   </main>
 

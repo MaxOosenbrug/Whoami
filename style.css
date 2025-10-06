@@ -6,57 +6,18 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, #5e60ce, #64dfdf);
+  background: linear-gradient(135deg,#64dfdf, #5e60ce);
+  animation: gradientMove 15s ease infinite;
   color: white;
   text-align: center;
   padding: 80px 20px;
-}
-
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 5%;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
+  position: relative; /* Added position relative */
 }
 
 .max {
   max-width: 600px;
   margin: 60px auto 0;
 }
-
-.btn {
-  background: white;
-  color: #5e60ce;
-  padding: 12px 24px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  display: inline-block;
-  transition: all 0.3s ease;
-  border: 2px solid #5e60ce;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: linear-gradient(135deg, #64dfdf, #5e60ce);
-  color: white;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-  border: 2px solid transparent;
-}
-
 
 section {
   padding: 80px 10%;
@@ -71,36 +32,14 @@ section {
 }
 
 .card {
+  position: relative;
   background: white;
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
-  font-size: 0.9em;
-  color: #777;
-}
-
-.profile-pic {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid white;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-
-.card {
-  position: relative;
   overflow: hidden;
-  border-radius: 12px;
-  background: white;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
 }
 
 .card::before {
@@ -133,12 +72,220 @@ footer {
   color: white;
 }
 
-.card-link {
+/* Knoppen in cards */
+.card .btn {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.card:hover .btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Algemene knopstijl */
+.btn {
+  background: white;
+  color: #5e60ce;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
   text-decoration: none;
-  color: inherit;
+  border: 2px solid #5e60ce;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(135deg, #64dfdf, #5e60ce);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  border: 2px solid transparent;
+}
+
+.profile-pic {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+
+/* Moon button styling */
+.moon-btn {
+  position: fixed; /* Was absolute */
+  top: 20px;
+  right: 20px;
+  background: white;
+  color: #5e60ce;
+  border: 2px solid #5e60ce;
+  border-radius: 50%;
+  width: 52px;  
+  height: 52px;   /* 40px * 1.3 ≈ 52px */
+  font-size: 23.4px; /* 18px * 1.3 ≈ 23.4px */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease, transform 0.3s ease;
+  z-index: 1000; /* Zorgt dat de knop boven alles blijft */
+}
+
+/* Merged .moon-btn:hover rule */
+.moon-btn:hover {
+  background: #5e60ce;
+  color: white;
+}
+
+/* Dark mode colors */
+body.dark-mode {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+body.dark-mode header {
+  background:
+    /* Maan */
+    radial-gradient(circle at 85% 25%, #fffbe6 60px, rgba(255,255,255,0.1) 80px, transparent 120px),
+    /* Grote sterren */
+    radial-gradient(circle at 20% 30%, #fff 2px, transparent 2.5px),
+    radial-gradient(circle at 70% 60%, #fff 1.5px, transparent 2px),
+    radial-gradient(circle at 50% 80%, #fff 1.8px, transparent 2.3px),
+    /* Kleine sterren */
+    radial-gradient(circle at 15% 70%, #fff 0.8px, transparent 1.2px),
+    radial-gradient(circle at 60% 20%, #fff 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 80%, #fff 1.2px, transparent 1.7px),
+    radial-gradient(circle at 35% 55%, #fff 0.7px, transparent 1.1px),
+    /* Hoofdachtergrond */
+    linear-gradient(135deg, #1e1e2f 60%, #23234a 100%);
+  background-size: 100% 100%;
+  animation: gradientMoveDark 15s ease infinite;
+  color: #f0f0f0;
+}
+
+body.dark-mode .card {
+  background: #1e1e1e;
+  box-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+
+body.dark-mode .card:hover::before {
+  background: linear-gradient(135deg, #8884ff, #ff84d4);
+}
+
+body.dark-mode .btn {
+  background: #333;
+  color: #64dfdf;
+  border: 2px solid #64dfdf;
+}
+
+body.dark-mode .btn:hover {
+  background: linear-gradient(135deg, #64dfdf, #8884ff);
+  color: white;
+  border: 2px solid transparent;
+}
+
+/* Smooth transition for animated elements */
+header, .card, .btn {
+  transition: background 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/* Moon button styling + glow in dark mode */
+/* 
+  background-size layers for body.dark-mode header:
+  1. First radial-gradient
+  2. Second radial-gradient
+  3. Third radial-gradient
+  4. Linear-gradient (main background)
+*/
+body.dark-mode header {
+  background: linear-gradient(135deg, #1e1e2f 60%, #23234a 100%);
+  background-size: 400% 400%;
+  animation: gradientMoveDark 15s ease infinite;
+  color: #f0f0f0;
+}
+
+@keyframes gradientMoveDark {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Shooting stars container */
+.shooting-stars {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* Shooting star style */
+.shooting-star {
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  width: 120px;
+  height: 2px;
+  background: linear-gradient(90deg, #fffbe6 0%, rgba(255,255,255,0) 100%);
+  opacity: 0.8;
+  border-radius: 2px;
+  transform: rotate(-20deg);
+  animation: shoot 2s linear infinite;
+}
+
+.shooting-star:nth-child(2) {
+  top: 40%;
+  left: 60%;
+  width: 90px;
+  animation-delay: 1s;
+  opacity: 0.7;
+}
+
+.shooting-star:nth-child(3) {
+  top: 70%;
+  left: 75%;
+  width: 100px;
+  animation-delay: 1.5s;
+  opacity: 0.6;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: translateX(0) translateY(0) rotate(-20deg) scaleX(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    transform: translateX(-400px) translateY(80px) rotate(-20deg) scaleX(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-500px) translateY(100px) rotate(-20deg) scaleX(1.3);
+  }
+}
+
+/* Alleen zichtbaar in dark mode */
+body.dark-mode .shooting-stars {
   display: block;
 }
 
-.card-link .card {
-  cursor: pointer;
+.shooting-stars {
+  display: none; /* standaard verbergen */
 }
